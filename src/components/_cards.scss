@@ -1,0 +1,71 @@
+@use '../base/variables';
+@use '../utils/mixins';
+@use '../utils/functions';
+
+%border-card {
+    border: 1px solid variables.$dark-accent-color;
+    border-radius: variables.$border-radius;
+}
+
+.card {
+    max-width: 21.875rem;
+    @include mixins.flexbox($justify: start, $direction: column);
+    @extend %border-card;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    img {
+        width: 100%;
+        height: 13rem;
+        object-fit: cover;
+        display: block;
+    }
+
+    &:hover {
+        box-shadow: functions.custom-box-shadow(0.75rem, rgba(0, 0, 0, 0.2));
+        @include mixins.transition(box-shadow);
+    }
+
+    .card-body {
+        padding: variables.$padding-regular;
+
+        h5 {
+            font-size: variables.$font-size-h-s;
+            color: variables.$subheading-color;
+            margin-bottom: variables.$margin-bottom-regular;
+        }
+
+        p {
+            color: variables.$nav-link-color;
+        }
+    }
+
+}
+
+.product-card {
+    min-width: 21.875rem;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid transparent;
+    
+    @include mixins.flexbox($justify: flex-end, $direction: column);
+
+    &:hover {
+        @extend %border-card;
+        box-shadow: functions.custom-box-shadow(0.75rem, rgba(0, 0, 0, 0.2));
+        @include mixins.transition(border-color, box-shadow);
+    }
+
+    img {
+        width: 100%;
+        max-height: 17rem;
+        object-fit: contain;
+        margin-bottom: variables.$margin-bottom-regular;
+    }
+
+    h3 {
+        font-size: variables.$font-size-h-m;
+        color: variables.$subheading-color;
+    }
+}

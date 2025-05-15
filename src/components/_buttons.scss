@@ -1,0 +1,22 @@
+@use '../base/variables';
+@use '../utils/mixins';
+@use 'sass:color';
+
+.btn {
+    width: 100%;
+    border: none;
+    background-color: variables.$accent-color;
+    border-radius: variables.$border-radius;
+    padding: variables.$padding-regular;
+    font-size: variables.$font-size-b2;
+    color: variables.$secondary-color;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: .5rem;
+    
+
+    &:hover {
+        background-color: color.adjust(variables.$accent-color, $lightness: -10%);
+        @include mixins.transition(background-color);
+    }
+ }

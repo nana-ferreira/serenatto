@@ -1,0 +1,45 @@
+@use '../base/variables';
+@use '../utils/mixins';
+
+%borda-estilo {
+    border: 1px solid variables.$form-border-color;
+    border-radius: variables.$border-radius;
+}
+
+.contact-container {
+    width: 40%;
+    margin: 6rem auto;
+    @extend %borda-estilo;
+    padding: 1.5rem;
+
+    @include mixins.respond-to(medium) {
+        width: 85%;
+        margin: 5rem auto;
+    }
+
+    h3 {
+        font-size: variables.$font-size-h-m;
+        color: variables.$subheading-color;
+        margin-bottom: 2rem;
+    }
+
+    label {
+        display: none;
+    }
+
+    input, #contato-preferencia {
+        width: 100%;
+        @extend %borda-estilo;
+        padding: variables.$padding-regular;
+        font-size: variables.$font-size-base;
+        color: variables.$nav-link-color;
+        margin-bottom: 1.5rem;
+        @include mixins.transition(border-color);
+
+            &:focus {
+                border: 2px solid variables.$accent-color;
+                outline: none;
+            }
+    }
+          
+}

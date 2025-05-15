@@ -1,0 +1,190 @@
+@use "../base/variables";
+@use '../utils/mixins';
+
+%base-h2 {
+  font-weight: 400;
+  line-height: variables.$line-height;
+  color: variables.$heading-color;
+  margin: 2rem 0;
+}
+
+%base-h3 {
+  font-size: variables.$font-size-h-l;
+  color: variables.$subheading-color;
+  margin-bottom: 3.75rem;
+  text-align: center;
+}
+
+%base-p {
+  font-size: variables.$font-size-b3;
+  font-weight: 400;
+  line-height: variables.$line-height;
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  color: variables.$secondary-color;
+
+    .container {
+      max-width: 75rem;
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+
+      @include mixins.flexbox($align: flex-start, $direction: column);
+
+      @include mixins.respond-to(medium) {
+        padding: 0 8%;
+      }
+    }
+
+    &.banner-1 {
+      background-image: url('../../assets/banner-1.png');
+      height: 81vh;
+
+      @include mixins.respond-to(medium) {
+        height: 64vh;
+
+        img {
+          max-width: 3.85rem; 
+        }
+      }
+
+      @include mixins.respond-to(small) {
+          height: 48vh;
+        }
+
+      h2 {
+        @extend %base-h2;
+        font-size: variables.$font-size-h-2xl;
+        text-align: left;
+
+        @include mixins.respond-to(medium) {
+          font-size: variables.$font-size-h-xl;
+          font-weight: 600;
+        }
+
+        @include mixins.respond-to(small) {
+          font-size: variables.$font-size-h-l;
+          margin: 1rem 0;
+        }
+      }
+  
+      span {
+        font-weight: 600;
+      }
+  
+      p {
+        @extend %base-p;
+        text-align: left;
+
+        @include mixins.respond-to(small) {
+          font-size: variables.$font-size-base;
+        }
+      }
+    }
+
+    &.banner-2 {
+      background-image: url('../../assets/banner-2.png');
+      min-height: 25rem;
+      @include mixins.flexbox($direction: column);
+
+      .container {
+        align-items: center;
+      }
+
+      h2 {
+        @extend %base-h2;
+        font-size: variables.$font-size-h-xl;
+        font-weight: 600;
+        text-align: center;
+
+        @include mixins.respond-to(small) {
+          font-size: variables.$font-size-h-m;
+          margin: 1.5rem 0;
+        }
+      }
+      
+      p {
+        @extend %base-p;
+        text-align: center;
+      }
+    }
+}
+
+.banner-3 img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
+
+.services {
+  padding: 6rem 0;
+
+  @include mixins.respond-to(large) {
+    padding: 5rem 0;
+  }
+
+  @include mixins.respond-to(small) {
+    padding: 3rem 0;
+  }
+
+  h3 {
+    @extend %base-h3;
+
+    @include mixins.respond-to(large) {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  .services-container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+
+    display: flex;
+    gap: 1.875rem;
+
+    @include mixins.respond-to(large) {
+      @include mixins.flexbox($direction: column);
+      row-gap: 2.5rem;
+    }
+  }
+}
+
+.products {
+  padding: 6rem 0;
+
+  @include mixins.respond-to(medium) {
+    padding: 5rem 0;
+  }
+
+  @include mixins.respond-to(small) {
+    padding: 3rem 0;
+  }
+
+  >h3 {
+    @extend %base-h3;
+  }
+
+  .products-container {
+    max-width: 75rem;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    column-gap: 2rem;
+    row-gap: 3.5rem;
+    margin: 4rem auto;
+    padding: 0 2rem;
+
+    @include mixins.respond-to(medium) {
+      grid-template-columns: repeat(2,minmax(250px, 1fr));
+    }
+
+    @include mixins.respond-to(small) {
+      grid-template-columns: auto;
+    }
+  }
+}

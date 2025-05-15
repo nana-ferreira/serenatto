@@ -1,0 +1,36 @@
+@use "../base/variables";
+@use "../utils/mixins";
+
+.footer-content {
+  background-color: variables.$accent-color;
+  color: variables.$secondary-color;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+
+  @include mixins.respond-to(medium) {
+    @include mixins.flexbox($direction: column)
+  }
+
+  p {
+    @include mixins.respond-to(medium) {
+      order: 2;
+    }
+  }
+  
+  .footer-image-container {
+    @include mixins.flexbox();
+    gap: 2rem;
+    padding-top: 1rem;
+
+    @include mixins.respond-to(medium) {
+      order: 1;
+      padding-bottom: 1.5rem;
+      padding-top: 0;
+    }
+
+    @include mixins.respond-to(small) {
+      padding-bottom: 0.9rem;
+    }
+  }
+}
